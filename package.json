@@ -11,9 +11,13 @@
     "start": "node_modules/.bin/ts-node src"
   },
   "dependencies": {
-    "axios": "^0.24.0"
+    "axios": "^0.24.0",
+    "bignumber.js": "^9.0.1",
+    "console-table-printer": "^2.10.0",
+    "opensea-scraper": "^4.0.1"
   },
   "devDependencies": {
+    "chalk": "^4.1.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   }
