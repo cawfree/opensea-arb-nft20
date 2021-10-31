@@ -2,7 +2,6 @@
 
 import axios from 'axios';
 import BigNumber from 'bignumber.js';
-import * as OpenSeaScraper from 'opensea-scraper';
 import * as chalk from 'chalk';
 import {printTable} from 'console-table-printer';
 
@@ -20,8 +19,10 @@ const compare = async (data: nft20Datum): Promise<nft20VsOpenSea> => {
     method: 'get',
     url: `https://api.opensea.io/api/v1/asset_contract/${contractAddress}`,
   });
-  const openSeaData = await OpenSeaScraper.basicInfo(slug);
-  const {floorPrice} = openSeaData;
+  const {data: {collection: {stats: {floor_price: floorPrice}}}} = await axios({
+    method: 'get',
+    url: `https://api.opensea.io/collection/${slug}`,
+  });
   const nft20Floor = new BigNumber(nft20EthPrice);
   const openSeaFloor = new BigNumber(`${floorPrice}`);
   return {contractAddress, nft20Floor, openSeaFloor, tokenName};

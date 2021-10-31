@@ -1,6 +1,6 @@
 {
   "name": "opensea-arb-nft20",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "🧸 💸 Detects arbitrage opportunities for ERC-721 tokens between OpenSea and NFT20.",
   "main": "dist",
   "repository": "https://github.com/cawfree/erc721arb20",
@@ -15,8 +15,7 @@
     "axios": "^0.24.0",
     "bignumber.js": "^9.0.1",
     "chalk": "^4.1.2",
-    "console-table-printer": "^2.10.0",
-    "opensea-scraper": "^4.0.1"
+    "console-table-printer": "^2.10.0"
   },
   "bin": {
     "opensea-arb-nft20": "dist/index.js"
