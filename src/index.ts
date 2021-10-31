@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import axios from 'axios';
 import BigNumber from 'bignumber.js';
 import * as OpenSeaScraper from 'opensea-scraper';
@@ -5,6 +7,8 @@ import * as chalk from 'chalk';
 import {printTable} from 'console-table-printer';
 
 import {nft20Datum, nft20Response, nft20VsOpenSea} from './@types';
+
+const ZERO = new BigNumber('0');
 
 const compare = async (data: nft20Datum): Promise<nft20VsOpenSea> => {
   const {
@@ -29,7 +33,7 @@ const accumulateInfo = async ({
   const results: nft20VsOpenSea[] = [];
   const dataWithFloor = data.filter(
     ({nft_eth_price}: nft20Datum) =>
-      new BigNumber(nft_eth_price).gt(new BigNumber("0")),
+      new BigNumber(nft_eth_price).gt(ZERO),
   )
     .filter(({nft_locked}: nft20Datum) => parseInt(nft_locked) > 0);
   console.log(chalk.bold`Planning to compare ${dataWithFloor.length} collections against OpenSea.`);
@@ -49,8 +53,7 @@ const diffFloor = ({
   openSeaFloor,
   nft20Floor,
 }: nft20VsOpenSea): BigNumber => {
-  const delta = new BigNumber(openSeaFloor.minus(nft20Floor));
-  return new BigNumber(delta.div(nft20Floor));
+  return new BigNumber(new BigNumber(openSeaFloor.minus(nft20Floor)).div(nft20Floor));
 };
 
 
@@ -74,7 +77,7 @@ const diffFloor = ({
         return {
           'Token Name': tokenName,
           'Contract Address': contractAddress,
-          'Floor Diff': d.gt(new BigNumber('0')) ? chalk.green(diff) : chalk.red(diff),
+          'Floor Diff': d.gt(ZERO) ? chalk.green(diff) : chalk.red(diff),
         };
       }),
   );
