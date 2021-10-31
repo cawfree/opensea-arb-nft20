@@ -1,0 +1,20 @@
+{
+  "name": "erc721arb20",
+  "version": "0.1.0",
+  "description": "🧸 💸 Detects arbitrage opportunities for ERC-721 tokens between OpenSea and NFT20.",
+  "main": "dist",
+  "repository": "https://github.com/cawfree/erc721arb20",
+  "author": "Alex Thomas (@cawfree) <hello@cawfree.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node_modules/.bin/ts-node src"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  }
+}
