@@ -8,7 +8,7 @@ This package is executable via [`npx`](https://medium.com/@maybekatz/introducing
 npx opensea-arb-nft20
 ```
 
-This will determine the floor price of NFT20's Liquidity Pools and compare these against the floor prices on OpenSea, and print the resulting information to the console:
+This will determine the floor price of NFT20's [liquidity pools](https://nft20.io/assets) and compare these against the floor prices available on OpenSea:
 
 
 ```shell
